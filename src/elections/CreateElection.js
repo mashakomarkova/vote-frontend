@@ -65,9 +65,10 @@ class CreateElection extends Component {
         let city = data.get('city');
         let country = data.get('country');
         let userId = JSON.parse(this.currentUser).id
+        let topic = data.get('topic')
         this.state.inputList.shift()
         const choices = [...this.state.inputList];
-        this.addElection({questionText, access, city, country, userId, choices},
+        this.addElection({questionText, access, city, country, topic, userId, choices},
             () => window.location.reload());
     };
 
@@ -77,15 +78,33 @@ class CreateElection extends Component {
         return (
             <div className="uk-margin">
                 <div className="uk-container">
-                    Add election
+                    {t('Add Election')}
                     <form method="post" onSubmit={this.handleSubmit}>
                         <div className="uk-margin">
-                            <textarea className="uk-textarea" name="questionText" placeholder="Enter election question"/>
-                            <input className="uk-input" name="access" placeholder="private/public"/>
-                            <input className="uk-input" name="city" placeholder="city"/>
-                            <input className="uk-input" name="country" placeholder="country"/>
+                            <textarea className="uk-textarea" name="questionText" placeholder={t('Enter election question')}/>
+                            <select className="uk-select" name="access">
+                                <option>public</option>
+                                <option>private</option>
+                            </select>
+                            <input className="uk-input" name="city" placeholder={t('city')}/>
+                            <input className="uk-input" name="country" placeholder={t('country')}/>
+                            <select className="uk-select">
+                                <option>radio</option>
+                                <option>multi select</option>
+                            </select>
+                            <select className="uk-select" name="topic">
+                                <option>programming</option>
+                                <option>environment</option>
+                                <option>fancy</option>
+                                <option>travelling</option>
+                                <option>reviews</option>
+                                <option>science</option>
+                                <option>motivation</option>
+                                <option>business</option>
+                                <option>other</option>
+                            </select>
                             <div className="uk-margin" id="create_election" ref={this.createElectionRef}>
-                                Choice
+                                {t('add choice')}
                                 {
                                     this.state.inputList.map((x, i) => {
                                         return(
@@ -94,10 +113,10 @@ class CreateElection extends Component {
                                                 <div>
                                                     {this.state.inputList.length !== 1 && <button
                                                         className="uk-button uk-button-danger"
-                                                        onClick={() => this.handleRemoveClick(i)}>Remove</button>}
+                                                        onClick={() => this.handleRemoveClick(i)}>{t('remove')}</button>}
                                                     {this.state.inputList.length - 1 === i &&
                                                     <button className="uk-button uk-button-primary"
-                                                            onClick={e=>this.handleAddClick(e)}>Add</button>}
+                                                            onClick={e=>this.handleAddClick(e)}>{t('add')}</button>}
                                                 </div>
                                             </div>
 
@@ -107,9 +126,9 @@ class CreateElection extends Component {
 
                             </div>
                         </div>
-                        <button type="submit" className="uk-button uk-button-primary">Add Election</button>
+                        <button type="submit" className="uk-button uk-button-primary">{t('Add Election')}</button>
                     </form>
-                    <div style={{ marginTop: 20 }}>{JSON.stringify(this.state.inputList)}</div>
+                    {/*<div style={{ marginTop: 20 }}>{JSON.stringify(this.state.inputList)}</div>*/}
                 </div>
             </div>
         )

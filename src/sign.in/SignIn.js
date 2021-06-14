@@ -6,6 +6,7 @@ class SignIn extends Component {
 
     signInApi = 'http://localhost:8080/users/logIn';
     getUserInfo = 'http://localhost:8080/users';
+    updateUserInfoApi = 'http://localhost:8080/users/update';
 
     constructor(props) {
         super(props);
@@ -25,6 +26,17 @@ class SignIn extends Component {
                 Cookies.set('token', 'Bearer_' + token.token);
                 login();
             });
+    }
+
+    updateUserInfo(data) {
+        return fetch(`${this.updateUserInfoApi}`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(() => window.location.reload());
     }
 
     logUser(email, onSuccess) {
@@ -52,50 +64,56 @@ class SignIn extends Component {
         });
     };
 
+    handleUpdateUserSubmit = (event) => {
+        event.preventDefault();
+        let data = new FormData(event.target);
+        let email = data.get("email");
+        let password = data.get("password");
+        let user = {email, password};
+        this.updateUserInfo(user, () => {
+
+        });
+    };
+
     renderPage() {
         const {t} = this.props;
 
         if (!this.isLoggedIn) {
             return (
-                <section className="login_part section_padding">
-                    <div className="container">
-                        <div className="row align-items-center">
-                            <div className="col-lg-6 col-md-6">
-                                <div className="login_part_text text-center">
-                                    <div className="login_part_text_iner">
-                                        <h2>New to our Service?</h2>
-                                        <p>There are advances being made in science and technology
-                                            everyday, and a good example of this is the</p>
-                                    </div>
+                <div className="container uk-margin-large">
+                    <div className="uk-align-center">
+                        <form method="post" onSubmit={this.handleSubmit}>
+                            <fieldset className="uk-fieldset">
+                                <div className="uk-margin">
+                                    <label>{t('username')}</label>
+                                    <input className="uk-input" type="text" name="username"/>
                                 </div>
-                            </div>
-                            <div className="col-lg-6 col-md-6">
-                                <div className="login_part_form">
-                                    <form className="row contact_form" method="post" onSubmit={this.handleSubmit}>
-                                        <div className="col-md-12 form-group p_star">
-                                            <label>{t('username')}</label>
-                                            <input className="form-control" type="text" name="username"/>
-                                        </div>
-                                        <div className="col-md-12 form-group p_star">
-                                            <label>{t('password')}</label>
-                                            <input className="form-control" type="password" name="password"/>
-                                        </div>
-                                        <button type="submit" className="btn_3">{t('login')}</button>
-                                    </form>
+                                <div className="uk-margin">
+                                    <label>{t('password')}</label>
+                                    <input className="uk-input" type="password" name="password"/>
                                 </div>
-                            </div>
-                        </div>
+                                <button type="submit" className="uk-button uk-button-primary">{t('login')}</button>
+                            </fieldset>
+                        </form>
                     </div>
-                </section>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
             )
         } else {
             return (
                 <section className="login_part section_padding">
                     <div className="container">
-                        <form method="post">
+                        <form method="post" onSubmit={this.handleUpdateUserSubmit}>
                             <div className="col-md-12 form-group p_star">
-                                <label>{t('username')}</label>
-                                <input className="form-control" type="text" name="username"/>
+                                <label>{t('email')}</label>
+                                <input className="form-control" type="text" name="email"/>
                             </div>
                             <div className="col-md-12 form-group p_star">
                                 <label>{t('password')}</label>

@@ -22,7 +22,19 @@ class AuthorizedHeader extends Component {
                 <li className="nav-item"><a className="nav-link" href="/elections">{t('all elections')}</a></li>
                 <li className="nav-item"><a className="nav-link" href="/elections/create">{t('create election')}</a></li>
                 <li className="nav-item"><a className="nav-link" onClick={this.logout}>{t('logout')}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/elections/user">{t('own elections')}</a></li>
                 <li className="nav-item"><a className="nav-link" href="/signIn">{this.user.email}</a></li>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {t('language')}
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                        <a className="dropdown-item" onClick={() => this.changeLanguage('ua')}>{t('ukrainian')}</a>
+                        <a className="dropdown-item" onClick={() => this.changeLanguage('en')}>{t('english')}</a>
+                    </div>
+                </li>
+
             </>
         )
     }

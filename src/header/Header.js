@@ -30,8 +30,8 @@ class Header extends Component {
             if (this.user.role.name === 'ROLE_ADMIN') {
                     return (
                         <>
-                            <AuthorizedHeader/>
                             <AdminHeader/>
+                            <AuthorizedHeader/>
                         </>
                     )
                 } else {
@@ -48,8 +48,7 @@ class Header extends Component {
                     <div className="row align-items-center justify-content-center">
                         <div className="col-lg-11">
                             <nav className="navbar navbar-expand-lg navbar-light">
-                                <a className="navbar-brand" href="/"> <img src="img/logo.png" alt="logo"/>
-                                </a>
+
                                 <div className="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                                     <ul className="navbar-nav">
                                         <li className="nav-item"><a className="nav-link" href="/home">{t("home")}</a>

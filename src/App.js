@@ -12,6 +12,10 @@ import SignIn from "./sign.in/SignIn";
 import NotFound from "./NotFound";
 import ViewAllElections from "./elections/ViewAllElections";
 import CreateElection from "./elections/CreateElection";
+import ViewOwnElections from "./elections/ViewOwnElections";
+import ViewElection from "./elections/ViewElection";
+import ViewOwnElection from "./elections/ViewOwnElection";
+import ViewAllUsers from "./admin/ViewAllUsers";
 
 class App extends Component {
     constructor(props) {
@@ -32,6 +36,10 @@ class App extends Component {
                             <Route exact path="/signIn" component={SignIn}/>
                             <Route exact path="/elections" component={ViewAllElections}/>
                             <Route exact path="/elections/create" component={CreateElection}/>
+                            <Route exact path="/elections/user" component={ViewOwnElections}/>
+                            <Route exact path="/elections/*" component={ViewElection}/>
+                            <Route exact path="/private/*" component={ViewOwnElection}/>
+                            <Route exact path="/users" component={ViewAllUsers}/>
                             <Route path="*" component={NotFound}/>
                         </Switch>
                         <Route path="/" component={Footer}/>

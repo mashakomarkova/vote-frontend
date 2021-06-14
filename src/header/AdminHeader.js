@@ -6,15 +6,14 @@ class AdminHeader extends Component {
 
     constructor(props) {
         super(props);
-        this.user = JSON.parse(Cookies.get('userForEmployee'));
+        this.user = JSON.parse(Cookies.get('currentUser'));
     }
 
     render() {
         const {t} = this.props;
         return (
             <>
-                <li className="nav-item"><a className="nav-link" href="/position">{t('add positions')}</a></li>
-                <li className="nav-item"><a className="nav-link" href="/employees">{t('add employee')}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/users">{t('view users')}</a></li>
             </>
         )
     }

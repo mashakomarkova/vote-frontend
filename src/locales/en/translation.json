@@ -18,8 +18,8 @@
   "dateOfBirth": "Enter date of birth",
   "enter id": "Enter user id",
   "id": "Id",
-  "employee first name": "Employee first name",
-  "employee last name": "Employee first name",
+  "user first name": "first name",
+  "user last name": "first name",
   "details": "Details",
   "total hours": "Total hours worked",
   "total sales": "Total sales",
@@ -51,5 +51,14 @@
   "city":"City",
   "country": "Country",
   "all elections" : "All elections",
-  "create election": "Create election"
+  "create election": "Create election",
+  "own elections": "Own elections",
+  "choice text": "Choice text",
+  "make choice": "Choose",
+  "choice rate": "Choice rate",
+  "view users": "Подивитися користувачів",
+  "grant role": "Grant admin role",
+  "role": "Role",
+  "results": "Results",
+  "Filter by question text": "Filter by question text"
 }
