@@ -3,7 +3,7 @@ import {withTranslation} from "react-i18next";
 
 class Register extends Component {
 
-    createUserApi = 'http://localhost:8080/users/create';
+    createUserApi = 'https://votes-backend.herokuapp.com/users/create';
     myRef;
 
     constructor(props) {

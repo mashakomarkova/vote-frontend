@@ -4,9 +4,9 @@ import {withTranslation} from "react-i18next";
 
 class SignIn extends Component {
 
-    signInApi = 'http://localhost:8080/users/logIn';
-    getUserInfo = 'http://localhost:8080/users';
-    updateUserInfoApi = 'http://localhost:8080/users/update';
+    signInApi = 'https://votes-backend.herokuapp.com/users/logIn';
+    getUserInfo = 'https://votes-backend.herokuapp.com/users';
+    updateUserInfoApi = 'https://votes-backend.herokuapp.com/users/update';
 
     constructor(props) {
         super(props);

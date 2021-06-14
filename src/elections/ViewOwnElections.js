@@ -4,8 +4,8 @@ import Cookies from "js-cookie";
 
 class ViewOwnElections extends Component {
 
-    ownElectionsApi = "http://localhost:8080/elections/own"
-    removeElectionsApi = "http://localhost:8080/elections/remove"
+    ownElectionsApi = "https://votes-backend.herokuapp.com/elections/own"
+    removeElectionsApi = "https://votes-backend.herokuapp.com/elections/remove"
 
     constructor(props) {
         super(props);
