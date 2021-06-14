@@ -5,14 +5,15 @@ import Cookies from "js-cookie";
 
 class ViewAllElections extends Component {
 
-    allElectionsApi = window.api+"/elections"
-    recommendedElectionsApi = window.api+"/recommended"
+    allElectionsApi = window.api + "/elections"
+    recommendedElectionsApi = window.api + "/recommended"
+    filterElectionsApi = window.api + "/filter"
 
     constructor(props) {
         super(props);
         this.state = {
             elections: [],
-            recommendedElections:[]
+            recommendedElections: []
         };
         this.position = new ElectionService(this.allElectionsApi);
         this.currentUser = JSON.parse(Cookies.get('currentUser'));
@@ -29,14 +30,24 @@ class ViewAllElections extends Component {
         )
     }
 
-    filterByQuestionText = (e) => {
-        e.preventDefault();
-        const {value} = e.target;
-        const elections = this.state.elections.filter(function (election) {
-            return election.questionText.includes(value)
-        })
-        this.setState({elections})
+    filterElections(name, value) {
+        return fetch(`${this.filterElectionsApi}?${name}=${value}`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => response.json())
+    }
 
+    handleFilter = (e) => {
+        e.preventDefault();
+        const {name} = e.target;
+        const {value} = e.target;
+        this.filterElections(name, value)
+            .then(elections => {
+                this.setState({elections: elections})
+            })
     }
 
     viewRecommendedElections() {
@@ -61,15 +72,15 @@ class ViewAllElections extends Component {
                 <div className="row">
                     <div className="uk-search">
                         <label className="uk-label">{t('Filter by question text')}</label>
-                        <input className="uk-input uk-form-width-medium" onChange={this.filterByQuestionText}/>
+                        <input className="uk-input uk-form-width-medium" name="questionText" onChange={this.handleFilter}/>
                     </div>
                     <div className="uk-search">
                         <label className="uk-label">{t('Filter by Country')}</label>
-                        <input className="uk-input uk-form-width-medium" onChange={this.filterByQuestionText}/>
+                        <input className="uk-input uk-form-width-medium" name="country" onChange={this.handleFilter}/>
                     </div>
                     <div className="uk-search">
                         <label className="uk-label">{t('Filter by city')}</label>
-                        <input className="uk-input uk-form-width-medium" onChange={this.filterByQuestionText}/>
+                        <input className="uk-input uk-form-width-medium" name="city" onChange={this.handleFilter}/>
                     </div>
                 </div>
                 <table className="uk-table uk-table-striped">
