@@ -5,8 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './i18n';
 
-window.api = "https://votes-frontend.herokuapp.com"
-//https://votes-frontend.herokuapp.com/
+window.api = "https://votes-backend.herokuapp.com"
 ReactDOM.render(
   <React.StrictMode>
     <App />
