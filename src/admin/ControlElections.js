@@ -4,7 +4,7 @@ import ElectionService from "../service/ElectionService";
 
 class ControlElections extends Component {
 
-    allElectionsApi = "https://votes-backend.herokuapp.com/elections"
+    allElectionsApi = window.api + "/elections"
 
     constructor(props) {
         super(props);

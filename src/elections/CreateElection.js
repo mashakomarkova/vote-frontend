@@ -4,7 +4,7 @@ import {withTranslation} from "react-i18next";
 
 class CreateElection extends Component {
 
-    createElectionApi = "https://votes-backend.herokuapp.com/create"
+    createElectionApi = window.api+"/create"
 
     constructor(props) {
         super(props);

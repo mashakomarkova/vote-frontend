@@ -4,9 +4,9 @@ import Cookies from "js-cookie";
 
 class ViewElection extends Component {
 
-    findElectionApi = "https://votes-backend.herokuapp.com/elections"
-    makeChoiceApi = "https://votes-backend.herokuapp.com/choose"
-    setTopicApi = "https://votes-backend.herokuapp.com/topics"
+    findElectionApi = window.api+"/elections"
+    makeChoiceApi = window.api+"/choose"
+    setTopicApi = window.api+"/topics"
 
     constructor(props) {
         super(props);

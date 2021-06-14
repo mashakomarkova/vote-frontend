@@ -5,8 +5,8 @@ import Cookies from "js-cookie";
 
 class ViewAllElections extends Component {
 
-    allElectionsApi = "https://votes-backend.herokuapp.com/elections"
-    recommendedElectionsApi = "https://votes-backend.herokuapp.com/recommended"
+    allElectionsApi = window.api+"/elections"
+    recommendedElectionsApi = window.api+"/recommended"
 
     constructor(props) {
         super(props);

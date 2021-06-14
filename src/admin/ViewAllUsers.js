@@ -3,9 +3,9 @@ import {withTranslation} from "react-i18next";
 
 class ViewAllUsers extends Component {
 
-    allUsersApi = "https://votes-backend.herokuapp.com/users"
-    changeUserStatusApi="https://votes-backend.herokuapp.com/users/changeStatus"
-    grantUserRoleApi="https://votes-backend.herokuapp.com/users/grantRole"
+    allUsersApi = window.api+"/users"
+    changeUserStatusApi=window.api+"/users/changeStatus"
+    grantUserRoleApi=window.api+"/users/grantRole"
 
     constructor(props) {
         super(props);
