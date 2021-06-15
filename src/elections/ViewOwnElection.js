@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 class ViewOwnElection extends Component {
 
     findElectionApi = window.api+"/private"
-    deactivateElectionApi = window.api+"deactivate"
+    deactivateElectionApi = window.api+"/deactivate"
 
     constructor(props) {
         super(props);
